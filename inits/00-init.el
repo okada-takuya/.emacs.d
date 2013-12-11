@@ -32,10 +32,6 @@
 ;; 行番号表示
 (global-linum-mode t)
 
-;; 行のハイライト
-(setq-default show-trailing-whitespace t)
-(set-face-background 'trailing-whitespace "#b14770")
-
 ;; beepの代わりに発光
 (setq visible-bell t)
 
