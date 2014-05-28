@@ -19,6 +19,7 @@
 	(expand-file-name "~/.emacs.d/elpa/yasnippet/")
         (expand-file-name "~/.emacs.d/elpa/rinari/")
         (expand-file-name "~/.emacs.d/elpa/rhtml/")
+        (expand-file-name "~/.emacs.d/elpa/apples-mode/")
         )
        load-path))
 
