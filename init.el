@@ -6,7 +6,7 @@
         (expand-file-name "~/.emacs.d/")
         (expand-file-name "~/.emacs.d/elpa/")
 	(expand-file-name "~/.emacs.d/elpa/init-loader/")
-	(expand-file-name "~/.emacs.d/elpa/org-20130624/")
+	(expand-file-name "~/.emacs.d/elpa/org-mode/lisp/")
         (expand-file-name "~/.emacs.d/elpa/color-theme-6.6.0/")
         (expand-file-name "~/.emacs.d/elpa/emacs-smartchr/")
         (expand-file-name "~/.emacs.d/elpa/auto-complete/")
@@ -17,6 +17,8 @@
 	(expand-file-name "~/.emacs.d/elpa/yatex/")
         (expand-file-name "~/.emacs.d/elpa/eldoc-extension/")
 	(expand-file-name "~/.emacs.d/elpa/yasnippet/")
+        (expand-file-name "~/.emacs.d/elpa/rinari/")
+        (expand-file-name "~/.emacs.d/elpa/rhtml/")
         )
        load-path))
 

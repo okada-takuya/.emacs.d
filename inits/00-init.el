@@ -11,6 +11,20 @@
 ;; バッファ自動読み込み
 (global-auto-revert-mode 1)
 
+;; 現在行ハイライト
+(defface hlline-face
+  '((((class color)
+      (background dark))
+     (:background "dark slate gray"))
+    (((class color)
+      (background light))
+     (:background  "#98FB98"))
+    (t
+     ()))
+  "*Face used by hl-line.")
+(setq hl-line-face 'hlline-face)
+(global-hl-line-mode)
+
 ;; 対応括弧ハイライト
 (show-paren-mode t)
 
@@ -39,4 +53,10 @@
 (setq ring-bell-function 'ignore)
 
 ;; 透明度設定
-(add-to-list 'default-frame-alist '(alpha . (80 50)))
+(add-to-list 'default-frame-alist '(alpha . (90 70)))
+
+;; *.~ とかのバックアップファイルを作らない
+(setq make-backup-files nil)
+
+;; .#* とかのバックアップファイルを作らない
+(setq auto-save-default nil)

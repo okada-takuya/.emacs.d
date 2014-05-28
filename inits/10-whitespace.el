@@ -78,3 +78,6 @@
 ;; 行末空白のハイライト
 (setq-default show-trailing-whitespace t)
 (set-face-background 'trailing-whitespace "cyan")
+
+;; 保存前に行末の空白削除
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
