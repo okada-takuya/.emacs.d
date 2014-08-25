@@ -69,4 +69,4 @@
                                      (interactive)
                                      (if current-prefix-arg
                                          (save-buffers-kill-emacs)
-                                       (save-buffers-kill-terminal))))
+                                       (save-buffers-kill-terminal)))))
