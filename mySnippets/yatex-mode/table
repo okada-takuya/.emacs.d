@@ -1,0 +1,17 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: table
+# key: table
+# binding: direct-keybinding
+# --
+\begin{table}[t]
+  \begin{center}
+    \caption{$1}
+    \label{tab:$2}
+    \scalebox{1.0}{
+      \begin{tabular}{$3}
+        \hline \hline
+        $4
+      \end{tabular}
+    }
+  \end{center}
+\end{table}$0

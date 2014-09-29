@@ -1,0 +1,9 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: desc
+# key: desc
+# binding: direct-keybinding
+# --
+\begin{description}
+ \item[$1] $2
+\end{description}
+$0

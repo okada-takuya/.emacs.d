@@ -1,0 +1,12 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: figure
+# key: figure
+# binding: direct-keybinding
+# --
+\begin{figure*}[t]
+  \begin{center}
+  \includegraphics[clip,scale=0.5]{./fig/fig$1.pdf}
+  \caption{$2}
+  \label{fig:$3}
+  \end{center}
+\end{figure*}$4
