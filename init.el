@@ -21,6 +21,7 @@
         (expand-file-name "~/.emacs.d/elpa/rhtml/")
         (expand-file-name "~/.emacs.d/elpa/apples-mode/")
         (expand-file-name "~/.emacs.d/elpa/markdown-mode/")
+        (expand-file-name "~/.emacs.d/elpa/org-toc")
         )
        load-path))
 

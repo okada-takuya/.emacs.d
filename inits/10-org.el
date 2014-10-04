@@ -150,3 +150,6 @@ color: #a0a0a0;
 </style>
 <link rel=\"stylesheet\" type=\"text/css\" href=\"pub/css/text.css\">
 ")
+
+(when (require 'org-toc nil t)
+  (add-hook 'org-mode-hook 'org-toc-enable))

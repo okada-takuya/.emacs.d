@@ -1,5 +1,5 @@
 ;; Fonts
-(let* ((size 16)
+(let* ((size 14)
        (asciifont "Ricty")
        (jpfont "Ricty")
        (h (* size 10))
