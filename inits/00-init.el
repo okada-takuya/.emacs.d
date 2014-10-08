@@ -70,3 +70,6 @@
                                      (if current-prefix-arg
                                          (save-buffers-kill-emacs)
                                        (save-buffers-kill-terminal)))))
+
+;; 最後に改行を入れる。
+(setq require-final-newline t)
