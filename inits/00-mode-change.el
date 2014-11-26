@@ -4,6 +4,7 @@
 (add-to-list 'auto-mode-alist '("Gemfile" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Guardfile" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
 ;; file contents
 (add-to-list 'interpreter-mode-alist '("ruby" . ruby-mode))
 
@@ -26,3 +27,6 @@
 ;; file name
 (add-to-list 'auto-mode-alist '("\\.text$" . org-mode))
 (add-to-list 'auto-mode-alist '("\\.txt$" . org-mode))
+
+;; scss-mode
+(add-to-list 'auto-mode-alist '("\\.scss$" . scss-mode))

@@ -3,7 +3,6 @@
 (setq load-path
       (append
        (list
-        (expand-file-name "~/.emacs.d/")
         (expand-file-name "~/.emacs.d/elpa/")
         (expand-file-name "~/.emacs.d/elpa/init-loader/")
         (expand-file-name "~/.emacs.d/elpa/org-mode/lisp/")
@@ -22,6 +21,8 @@
         (expand-file-name "~/.emacs.d/elpa/apples-mode/")
         (expand-file-name "~/.emacs.d/elpa/markdown-mode/")
         (expand-file-name "~/.emacs.d/elpa/org-toc")
+        (expand-file-name "~/.emacs.d/elpa/coffee-mode")
+        (expand-file-name "~/.emacs.d/elpa/scss-mode")
         )
        load-path))
 

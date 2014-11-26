@@ -1,7 +1,8 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: figure
-# key: figure
+# name: src
+# key: src
 # binding: direct-keybinding
 # --
-\insertfigure[0.8]{fig:$1}{fig$2}{$3}{$4}
-$0
+#+BEGIN_SRC $1
+  $0
+#+END_SRC

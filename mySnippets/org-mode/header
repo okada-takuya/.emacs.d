@@ -3,7 +3,7 @@
 # key: header
 # binding: direct-keybinding
 # --
-#+TITLE:     $1
-#+AUTHOR:    Takuya Okada
-#+DATE:      `(format-time-string "<%Y-%m-%d>" (current-time))`
+#+TITLE: $1
+#+DATE: `(format-time-string "<%Y-%m-%d>" (current-time))`
+#+AUTHOR: Takuya Okada
 $0

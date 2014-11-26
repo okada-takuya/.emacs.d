@@ -151,5 +151,55 @@ color: #a0a0a0;
 <link rel=\"stylesheet\" type=\"text/css\" href=\"pub/css/text.css\">
 ")
 
+;; https://github.com/snosov1/org-toc
+;; org-mode ファイルに目次付け
+;; C-c C-q で目次をつける
+;; :TOC:というタグがついているところに目次ができる
 (when (require 'org-toc nil t)
   (add-hook 'org-mode-hook 'org-toc-enable))
+
+;; agenda 表示の対象ファイル
+(setq org-agenda-files (list "~/Dropbox/org"))
+
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-cc" 'org-capture)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cb" 'org-iswitch)
+
+;; DONEの時刻を記録
+(setq org-log-done 'time)
+
+;; 独自に設定したTODOの状態の色指定
+;; 色一覧は M-x list-colors-display
+(setq org-todo-keyword-faces
+      '(("STARTED" . "turquoise1")
+        ("WAIT" . "SeaGreen1")
+        ("POSTPONE" . "magenta")
+        ("MAYBE" . "yellow")))
+
+;; org-capture の設定
+(setq org-capture-templates
+      '(("t" "TODO" entry (file+headline "~/Dropbox/org/TODO.org" "Inbox")
+         "*** TODO %?\n    CAPTURED_AT: %a\n    %i")))
+
+(setq org-agenda-custom-commands
+      '(
+        ("o" . "Original agenda view") ; description for "o" prefix
+        ("oa" "ALL TODO"
+         (
+          (todo "TODO")
+          (todo "STARTED")
+          (todo "WAIT")
+          (todo "POSTPONE")
+          (todo "MAYBE")
+          )
+         )
+        ("ot" todo "TODO")
+        ("os" todo "STARTED")
+        ("ow" todo "WAIT")
+        ("op" todo "POSTPONE")
+        ("om" todo "MAYBE")
+        ("oS" tags-todo "@SHOPPING")
+        ("oH" tags-todo "@HOME")
+        ("oO" tags-todo "@OFFICE")
+        ))
