@@ -13,3 +13,11 @@
 
 ;; For Emacs Server
 (global-set-key "\C-x\C-c" 'delete-frame)
+
+;; Disable minimize window
+(global-unset-key "\C-z")
+(global-set-key "\C-zh" 'help)
+(global-set-key "\C-z\C-z" 'suspend-emacs)
+
+;; toggle minimap
+(global-set-key "\C-cm" 'minimap-toggle)

@@ -1,30 +1,6 @@
-;; Time-stamp: "Fri Nov 22 22:51:33 JST 2013"
-;; ロードパス
-(setq load-path
-      (append
-       (list
-        (expand-file-name "~/.emacs.d/elpa/")
-        (expand-file-name "~/.emacs.d/elpa/init-loader/")
-        (expand-file-name "~/.emacs.d/elpa/org-mode/lisp/")
-        (expand-file-name "~/.emacs.d/elpa/color-theme-6.6.0/")
-        (expand-file-name "~/.emacs.d/elpa/emacs-smartchr/")
-        (expand-file-name "~/.emacs.d/elpa/auto-complete/")
-        (expand-file-name "~/.emacs.d/elpa/ruby-block/")
-        (expand-file-name "~/.emacs.d/elpa/ruby-electric/")
-        (expand-file-name "~/.emacs.d/elpa/modeline-git-branch/")
-        (expand-file-name "~/.emacs.d/elpa/haskell-mode-2.8.0/")
-        (expand-file-name "~/.emacs.d/elpa/yatex/")
-        (expand-file-name "~/.emacs.d/elpa/eldoc-extension/")
-        (expand-file-name "~/.emacs.d/elpa/yasnippet/")
-        (expand-file-name "~/.emacs.d/elpa/rinari/")
-        (expand-file-name "~/.emacs.d/elpa/rhtml/")
-        (expand-file-name "~/.emacs.d/elpa/apples-mode/")
-        (expand-file-name "~/.emacs.d/elpa/markdown-mode/")
-        (expand-file-name "~/.emacs.d/elpa/org-toc")
-        (expand-file-name "~/.emacs.d/elpa/coffee-mode")
-        (expand-file-name "~/.emacs.d/elpa/scss-mode")
-        )
-       load-path))
+;; cask setup some packages.
+(require 'cask "~/.cask/cask.el")
+(cask-initialize)
 
 ;; init-loader
 ;; 設定ファイルをinits以下に集約する
@@ -35,3 +11,20 @@
 ;; Linux  : linux-hoge.el
 (require 'init-loader)
 (init-loader-load "~/.emacs.d/inits")
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(jay-url localhost:3000)
+ '(minimap-window-location (quote right))
+ '(org2blog/wp-sourcecode-default-params nil)
+ '(org2blog/wp-use-sourcecode-shortcode t)
+ '(org2blog/wp-use-tags-as-categories t)
+ '(yas-trigger-key "TAB"))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

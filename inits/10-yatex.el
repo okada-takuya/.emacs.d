@@ -17,20 +17,7 @@
 (setq YaTeX-dvi2-command-ext-alist
       '(("TeXworks\\|SumatraPDF\\|evince\\|okular\\|firefox\\|chrome\\|AcroRd32\\|pdfopen" . ".pdf")))
 (setq tex-command "powershell -Command \"& {$b = [System.IO.Path]::GetFileNameWithoutExtension($args);$texopt = [System.String]::Concat('\"\"\"','-kanji=utf8 -guess-input-enc -synctex=1 -sjis-terminal','\"\"\"');ptex2pdf -l -ot $texopt $b}\"")
-;(setq tex-command "ptex2pdf -l -u -ot \"-kanji=utf8 -no-guess-input-enc -synctex=1\"")
-;(setq tex-command "pdflatex -synctex=1")
-;(setq tex-command "lualatex -synctex=1")
-;(setq tex-command "luajitlatex -synctex=1")
-;(setq tex-command "xelatex -synctex=1")
-;(setq tex-command "latexmk")
-;(setq tex-command "latexmk -e \"$latex=q/platex %O -kanji=utf8 -guess-input-enc -synctex=1 %S/\" -e \"$bibtex=q/pbibtex %O -kanji=utf8 %B/\" -e \"$makeindex=q/mendex %O -U -o %D %S/\" -e \"$dvipdf=q/dvipdfmx %O -o %D %S/\" -norc -gg -pdfdvi")
-;(setq tex-command "latexmk -e \"$latex=q/platex %O -kanji=utf8 -guess-input-enc -synctex=1 %S/\" -e \"$bibtex=q/pbibtex %O -kanji=utf8 %B/\" -e \"$makeindex=q/mendex %O -U -o %D %S/\" -e \"$dvips=q/dvips %O -z -f %S | convbkmk -g > %D/\" -e \"$ps2pdf=q/ps2pdf.bat %O %S %D/\" -norc -gg -pdfps")
-;(setq tex-command "latexmk -e \"$latex=q/uplatex %O -kanji=utf8 -no-guess-input-enc -synctex=1 %S/\" -e \"$bibtex=q/upbibtex %O %B/\" -e \"$makeindex=q/mendex %O -U -o %D %S/\" -e \"$dvipdf=q/dvipdfmx %O -o %D %S/\" -norc -gg -pdfdvi")
-;(setq tex-command "latexmk -e \"$latex=q/uplatex %O -kanji=utf8 -no-guess-input-enc -synctex=1 %S/\" -e \"$bibtex=q/upbibtex %O %B/\" -e \"$makeindex=q/mendex %O -U -o %D %S/\" -e \"$dvips=q/dvips %O -z -f %S | convbkmk -u > %D/\" -e \"$ps2pdf=q/ps2pdf.bat %O %S %D/\" -norc -gg -pdfps")
-;(setq tex-command "latexmk -e \"$pdflatex=q/pdflatex %O -synctex=1 %S/\" -e \"$bibtex=q/bibtex %O %B/\" -e \"$makeindex=q/makeindex %O -o %D %S/\" -norc -gg -pdf")
-;(setq tex-command "latexmk -e \"$pdflatex=q/lualatex %O -synctex=1 %S/\" -e \"$bibtex=q/bibtexu %O %B/\" -e \"$makeindex=q/texindy %O -o %D %S/\" -norc -gg -lualatex")
-;(setq tex-command "latexmk -e \"$pdflatex=q/luajitlatex %O -synctex=1 %S/\" -e \"$bibtex=q/bibtexu %O %B/\" -e \"$makeindex=q/texindy %O -o %D %S/\" -norc -gg -lualatex")
-;(setq tex-command "latexmk -e \"$pdflatex=q/xelatex %O -synctex=1 %S/\" -e \"$bibtex=q/bibtexu %O %B/\" -e \"$makeindex=q/texindy %O -o %D %S/\" -norc -gg -xelatex")
+
 (setq bibtex-command (cond ((string-match "uplatex\\|-u" tex-command) "upbibtex")
                            ((string-match "platex" tex-command) "pbibtex -kanji=utf8")
                            ((string-match "lualatex\\|luajitlatex\\|xelatex" tex-command) "bibtexu")
@@ -42,9 +29,7 @@
                               ((string-match "pdflatex\\|latex" tex-command) "makeindex")
                               (t "mendex -U")))
 (setq dvi2-command "texworks")
-;(setq dvi2-command "rundll32 shell32,ShellExec_RunDLL SumatraPDF -reuse-instance")
-;(setq dvi2-command "powershell -Command \"& {$p = [System.String]::Concat('\"\"\"',[System.IO.Path]::GetFileName($args),'\"\"\"');Start-Process firefox -ArgumentList ('-new-window',$p)}\"")
-;(setq dvi2-command "powershell -Command \"& {$p = [System.String]::Concat('\"\"\"',[System.IO.Path]::GetFullPath($args),'\"\"\"');Start-Process chrome -ArgumentList ('--new-window',$p)}\"")
+
 (setq dviprint-command-format "powershell -Command \"& {$r = Write-Output %s;$p = [System.String]::Concat('\"\"\"',[System.IO.Path]::GetFileNameWithoutExtension($r),'.pdf','\"\"\"');Start-Process pdfopen -ArgumentList ('--rxi','--file',$p)}\"")
 
 (defun sumatrapdf-forward-search ()
@@ -110,3 +95,32 @@
              (reftex-mode 1)
              (define-key reftex-mode-map (concat YaTeX-prefix ">") 'YaTeX-comment-region)
              (define-key reftex-mode-map (concat YaTeX-prefix "<") 'YaTeX-uncomment-region)))
+
+;; Setting for outline-minor-mode
+(defun latex-outline-level ()
+  (interactive)
+  (let ((str nil))
+    (looking-at outline-regexp)
+    (setq str (buffer-substring-no-properties (match-beginning 0) (match-end 0)))
+    (cond ;; キーワード に 階層 を返す
+     ((string-match "documentclass" str) 1)
+     ((string-match "documentstyle" str) 1)
+     ((string-match "part" str) 2)
+     ((string-match "chapter" str) 3)
+     ((string-match "appendix" str) 3)
+     ((string-match "subsubsection" str) 6)
+     ((string-match "subsection" str) 5)
+     ((string-match "section" str) 4)
+     (t (+ 6 (length str)))
+     )))
+
+(add-hook 'yatex-mode-hook
+          '(lambda ()
+             (setq outline-level 'latex-outline-level)
+             (make-local-variable 'outline-regexp)
+             (setq outline-regexp
+                   (concat "[ \t]*\\\\\\(documentstyle\\|documentclass\\|"
+                           "part\\|chapter\\|appendix\\|section\\|subsection\\|subsubsection\\)"
+                           "\\*?[ \t]*[[{]"))
+             (outline-minor-mode t)
+             (define-key outline-minor-mode-map "\C-i" 'org-cycle)))

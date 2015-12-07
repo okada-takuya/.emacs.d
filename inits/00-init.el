@@ -12,17 +12,6 @@
 (global-auto-revert-mode 1)
 
 ;; 現在行ハイライト
-(defface hlline-face
-  '((((class color)
-      (background dark))
-     (:background "dark slate gray"))
-    (((class color)
-      (background light))
-     (:background  "#98FB98"))
-    (t
-     ()))
-  "*Face used by hl-line.")
-(setq hl-line-face 'hlline-face)
 (global-hl-line-mode)
 
 ;; 対応括弧ハイライト
@@ -30,6 +19,9 @@
 
 ;; オープニングメッセージ消去
 (setq inhibit-startup-message -1)
+
+;; scratch buf メッセージ消去
+(setq initial-scratch-message "")
 
 ;; カーソル位置の桁数をモードライン行に表示する
 (column-number-mode 1)
@@ -53,7 +45,7 @@
 (setq ring-bell-function 'ignore)
 
 ;; 透明度設定
-(add-to-list 'default-frame-alist '(alpha . (90 70)))
+(add-to-list 'default-frame-alist '(alpha . (100 90)))
 
 ;; *.~ とかのバックアップファイルを作らない
 (setq make-backup-files nil)
@@ -62,6 +54,10 @@
 (setq auto-save-default nil)
 
 ;; For Emacs server
+(require 'server)
+(unless (server-running-p)
+  (server-start))
+
 (when (daemonp)
   (defalias 'exit 'save-buffers-kill-emacs)
   (global-set-key (kbd "C-x c") 'suspend-frame)
@@ -73,3 +69,7 @@
 
 ;; 最後に改行を入れる。
 (setq require-final-newline t)
+
+;; set molokai theme
+(load-theme 'molokai t)
+(enable-theme 'molokai)

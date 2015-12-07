@@ -4,7 +4,7 @@
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("org-capture-last-stored"
  (filename . "~/Dropbox/org/TODO.org")
- (front-context-string . "*** TODO TODOテンプ")
- (rear-context-string . "トのプライオリティを下げる]]\n")
- (position . 551))
+ (front-context-string . "*** TODO nomratに")
+ (rear-context-string . "nceRecorder を分離\n")
+ (position . 525))
 )
