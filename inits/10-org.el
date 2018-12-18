@@ -151,16 +151,13 @@ color: #a0a0a0;
 <link rel=\"stylesheet\" type=\"text/css\" href=\"pub/css/text.css\">
 ")
 
-;; https://github.com/snosov1/org-toc
-;; org-mode ファイルに目次付け
-;; C-c C-q で目次をつける
-;; :TOC:というタグがついているところに目次ができる
-(if (require 'toc-org nil t)
-    (add-hook 'org-mode-hook 'toc-org-enable)
-  (warn "toc-org not found"))
+;; Set to the location of Org files on my local system
+(setq org-directory "~/Documents/org/")
+(when (file-exists-p "~/Dropbox/org/")
+  (setq org-directory "~/Dropbox/org/"))
 
 ;; agenda 表示の対象ファイル
-(setq org-agenda-files (list "~/Dropbox/org"))
+(setq org-agenda-files (list org-directory))
 
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-cc" 'org-capture)
@@ -174,6 +171,7 @@ color: #a0a0a0;
 ;; 色一覧は M-x list-colors-display
 (setq org-todo-keyword-faces
       '(("STARTED" . "turquoise1")
+        ("DOING" . "red")
         ("WAIT" . "SeaGreen1")
         ("POSTPONE" . "magenta")
         ("MAYBE" . "yellow")
@@ -182,7 +180,7 @@ color: #a0a0a0;
 
 ;; org-capture の設定
 (setq org-capture-templates
-      '(("t" "TODO" entry (file+headline "~/Dropbox/org/TODO.org" "Inbox")
+      '(("t" "TODO" entry (file+headline (format "%s/TODO.org" org-directory) "Inbox")
          "*** TODO %?\n    CAPTURED_AT: %a\n    %i")))
 
 (setq org-agenda-custom-commands
@@ -206,12 +204,3 @@ color: #a0a0a0;
         ("oH" tags-todo "@HOME")
         ("oO" tags-todo "@OFFICE")
         ))
-
-;; Set to the location of Org files on my local system
-(setq org-directory "~/Dropbox/org")
-
-;; For mobile org
-;; Set to the name of the file where new notes will be stored
-(setq org-mobile-inbox-for-pull "~/Dropbox/org/flagged.org")
-;; Set to <your Dropbox root directory>/MobileOrg.
-(setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")

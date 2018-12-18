@@ -1,9 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: header
-# key: header
-# binding: direct-keybinding
-# --
-#+TITLE: $1
-#+DATE: `(format-time-string "<%Y-%m-%d>" (current-time))`
-#+AUTHOR: Takuya Okada
-$0

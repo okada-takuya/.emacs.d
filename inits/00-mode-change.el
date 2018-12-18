@@ -18,15 +18,15 @@
 (add-to-list 'interpreter-mode-alist '("zsh" . shell-script-mode))
 (add-to-list 'interpreter-mode-alist '("sh" . shell-script-mode))
 
-;; markdown-mode
-;; file name
-(add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
-
 ;; org-mode
 ;; file name
 (add-to-list 'auto-mode-alist '("\\.text$" . org-mode))
 (add-to-list 'auto-mode-alist '("\\.txt$" . org-mode))
+
+;; markdown-mode
+;; file name
+(add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
 
 ;; scss-mode
 (add-to-list 'auto-mode-alist '("\\.scss$" . scss-mode))

@@ -1,10 +1,16 @@
 ;;
 ;; Remap font size
 ;;
-(global-set-key [(super ?+)] (lambda () (interactive) (text-scale-increase 1)))
-(global-set-key [(super ?-)] (lambda () (interactive) (text-scale-increase -1)))
-(global-set-key [(super ?0)] (lambda () (interactive) (text-scale-increase 0)))
-(global-set-key [(super ?8)] (lambda () (interactive) (toggle-current-background-type)))
+(cond ((eq system-type 'windows-nt)
+       (global-set-key "\M-+" (lambda () (interactive) (text-scale-increase 1)))
+       (global-set-key "\M--" (lambda () (interactive) (text-scale-increase -1)))
+       (global-set-key "\M-0" (lambda () (interactive) (text-scale-increase 0))))
+      ((eq system-type 'darwin)
+       (global-set-key [(super ?+)] (lambda () (interactive) (text-scale-increase 1)))
+       (global-set-key [(super ?-)] (lambda () (interactive) (text-scale-increase -1)))
+       (global-set-key [(super ?0)] (lambda () (interactive) (text-scale-increase 0))))
+      (t
+       (print (format "Undefined key map for this system-type: %s" system-type))))
 
 ;; Control-h is BS
 (load-library "term/bobcat")
@@ -21,3 +27,6 @@
 
 ;; toggle minimap
 (global-set-key "\C-cm" 'minimap-toggle)
+
+;; Undo Redo setting
+(global-set-key "\C-z" 'undo)

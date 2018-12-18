@@ -1,6 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: current
-# key: current
-# binding: direct-keybinding
-# --
-`(format-time-string "<%Y-%m-%d>" (current-time))`
