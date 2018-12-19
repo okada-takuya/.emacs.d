@@ -1,3 +1,13 @@
+;; proxy server setting
+(setq proxy-config-file-path "config/proxy.conf")
+(when (file-readable-p proxy-config-file-path)
+  (let ((proxy (with-temp-buffer
+                (insert-file-contents proxy-config-file-path)
+                (buffer-substring-no-properties (point-min) (point-max)))))
+    (setq url-proxy-services '(("no_proxy" . "localhost")
+                               ("http" . 'proxy)
+                               ("https" . 'proxy)))))
+
 ;; 何も考えず公式のREADMEからコピペすればいいコード
 ;; straight.el自身のインストールと初期設定を行ってくれる
 (defvar bootstrap-version)
