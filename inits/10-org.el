@@ -155,6 +155,7 @@ color: #a0a0a0;
 (setq org-directory "~/Documents/org/")
 (when (file-exists-p "~/Dropbox/org/")
   (setq org-directory "~/Dropbox/org/"))
+(setq todo-file (concat org-directory "TODO.org"))
 
 ;; agenda 表示の対象ファイル
 (setq org-agenda-files (list org-directory))
@@ -180,7 +181,7 @@ color: #a0a0a0;
 
 ;; org-capture の設定
 (setq org-capture-templates
-      '(("t" "TODO" entry (file+headline (format "%s/TODO.org" org-directory) "Inbox")
+      '(("t" "TODO" entry (file+headline todo-file "Inbox")
          "*** TODO %?\n    CAPTURED_AT: %a\n    %i")))
 
 (setq org-agenda-custom-commands
