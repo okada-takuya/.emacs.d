@@ -20,13 +20,13 @@
 ;; 本来は (use-package hoge :straight t) のように書く必要がある
 (setq straight-use-package-by-default t)
 
+(package-initialize)
+
 ;; Add repositories
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
-
-(package-initialize)
 
 ;; init-loader
 ;; 設定ファイルをinits以下に集約する
