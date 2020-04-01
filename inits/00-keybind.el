@@ -30,3 +30,9 @@
 
 ;; Undo Redo setting
 (global-set-key "\C-z" 'undo)
+
+;; Search org-directory
+(global-set-key (kbd "<f9>") 'find-file-org-document-directory)
+
+;; agenda
+(global-set-key (kbd "<f12>") 'org-agenda)

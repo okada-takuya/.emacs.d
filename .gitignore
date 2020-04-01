@@ -8,3 +8,4 @@ recentf
 config/proxy.conf
 server/server
 bookmarks
+org-clock-save.el
