@@ -221,15 +221,6 @@ color: #a0a0a0;
                "* %?\n意味: \n%t\n%U\n%a\n")
               )))
 
-;; 計時時、なんのLOGもないLOGBOOKを削除する。
-(defun bh/remove-empty-drawer-on-clock-out ()
-  (interactive)
-  (save-excursion
-    (beginning-of-line 0)
-    (org-remove-empty-drawer-at "LOGBOOK" (point))))
-
-(add-hook 'org-clock-out-hook 'bh/remove-empty-drawer-on-clock-out 'append)
-
 ;; Refile設定群
 ; Targets include this file and any file contributing to the agenda - up to 9 levels deep
 (setq org-refile-targets (quote ((nil :maxlevel . 9)
