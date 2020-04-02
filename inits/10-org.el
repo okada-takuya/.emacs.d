@@ -204,8 +204,8 @@ color: #a0a0a0;
                "* TODO %?\n%U\n%a\n"
                :clock-in t :clock-resume t)
               ("r" "Response: メール返信" entry (file org-default-notes-file)
-               "* NEXT %:from からの %:subject に返信\nSCHEDULED: %t\n%U\n%a\n"
-               :clock-in t :clock-resume t :immediate-finish t)
+               "* NEXT メール返信: %?\nSCHEDULED: %t\n%U\n%a\n"
+               :clock-in t :clock-resume t)
               ("n" "Note: メモ" entry (file org-default-notes-file)
                "* %? :NOTE:\n%U\n%a\n"
                :clock-in t :clock-resume t)
